@@ -14,6 +14,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    imagen:{
+      type: DataTypes.STRING,
+      defaultValue: "https://i.servimg.com/u/f60/14/90/93/75/tm/pokemo10.png",
+    },
     vida: {
       type: DataTypes.INTEGER,
       allowNull: true,

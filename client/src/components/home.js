@@ -5,6 +5,9 @@ import { getPokemons } from '../actions';
 import Card from './card';
 import NavBar from './navBar';
 import ReactPaginate from "react-paginate"
+import Tipos from './tipos';
+import "./home.css"
+import Loading from './loading';
 
 export default function Home(){
     // useDispatch se usa para enviar acciones
@@ -20,45 +23,80 @@ export default function Home(){
     const pagesVisited = currentPage * pokesPerPage;
 
     const showPokes = allPokemons.slice(pagesVisited, pagesVisited + pokesPerPage).map(
-        p => <Card name = {p.nombre} img={p.imagen} types={p.tipos.map(p => <p>{p.name}</p>)}/>
+        p => <Card name = {p.nombre} img={p.imagen} types={p.tipos}/>
     )
     
     const pageCount = Math.ceil(allPokemons.length / pokesPerPage)
     const changePage = ({selected}) => {setCurrentPage(selected)}
     
-    console.log("SALE O NO QUE PEDOOOO???", allPokemons)
+    //console.log("SALE O NO QUE PEDOOOO???", allPokemons)
     // el segundo parametro es de lo que depende el componentdidmount
     // si el array tiene algo es móntalo cuando este el contenido del array
     useEffect(() =>{
         dispatch(getPokemons())}, [dispatch]
     );
     
-    function handleClick(e){
-        e.preventDefault();
-        dispatch(getPokemons())
-    }
-  
+    useEffect(() => {
+        setCurrentPage(0)
+     }, [allPokemons]);
+    
+    
+     //dejar fijo el tipos
+     const[tiposEstado, SetTiposEstado] = useState(false)
+     const fixTipos = () =>{
+         if(window.scrollY >= 258){
+            SetTiposEstado(true)
+         }
+         else{
+             SetTiposEstado(false)
+         }
+     }
+    window.addEventListener('scroll', fixTipos)
+
+    //loading
+    const[loading, SetLoading] = useState(false)
+    useEffect(() =>{
+        SetLoading(true)
+        setTimeout(() =>{
+            SetLoading(false)
+        }, 7000)
+    }, [])
+
+
     return (
-        <div>
-            <h1>Atraparlos es mi misión!</h1>
-            <button onClick={e => {handleClick(e)}}>
-                Pokemones
-            </button>
-            <NavBar/>
-            <div>
-                {showPokes}
-                <ReactPaginate
-                    previousLabel = {"Anterior"}
-                    nextLabel = {"Siguiente"}
-                    pageCount = {pageCount}
-                    onPageChange = {changePage}
-                    containerClassName = {"paginationDiv"}
-                    previousClassName = {"prevBtn"}
-                    nextLinkClassName = {"nextBtn"}
-                    disabledClassName = {"disabledPag"}
-                    activeClassName = {"activePage"}
-                />
-            </div>
+        <div className='homeDiv'>
+            {
+                loading? (
+                <Loading loading={loading}/>):
+                
+                (
+                <>
+                    <div className='homeTitleDiv'>
+                        <h1 className='homeTitle'>Pokemon</h1>
+                    </div>
+                    <NavBar className='navBarDiv'/>
+                    <div className={ tiposEstado ? 'tiposDiv tiposFixed' : 'tiposDiv'}>
+                        <Tipos/>
+                    </div>
+                    <div className='pokesDiv'>
+                        {showPokes}
+                    </div>
+                    <div className='paginationDiv'> 
+                        <ReactPaginate
+                                previousLabel = {"Anterior"}
+                                nextLabel = {"Siguiente"}
+                                pageCount = {pageCount}
+                                onPageChange = {changePage}
+                                containerClassName = {"paginationBttns"}
+                                previousClassName = {"prevBtn pagS"}
+                                nextLinkClassName = {"nextBtn pagS"}
+                                disabledClassName = {"disabledPag"}
+                                activeClassName = {"activePage"}
+                            />
+                    </div>
+                </>
+                )
+            }
         </div>
     )
 }

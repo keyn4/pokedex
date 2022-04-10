@@ -1,0 +1,29 @@
+.searchBarCont{
+    border: solid 4px #baa24a;
+    border-radius: 6px;
+    height: 68px;
+    width: 500px;
+    background-image: url("../imgs/inputbg.jpg");
+    outline: none;
+    font-size: 20px;
+    font-family: pokeFont;
+    margin-top: 80px;
+}
+
+.buscarInput{
+    border: solid 4px #baa24a;
+    border-radius: 6px;
+    height: 68px;
+    font-size: 20px;
+    font-family: pokeFont;
+    font-weight: bolder;
+    padding: 8px;
+    background-color: rgb(148, 146, 175, 0.7);
+    color: 	#f8f8f8;
+    text-shadow: 3px 3px 0px #000
+}
+
+.linkInput{
+    text-decoration: none;
+}
+

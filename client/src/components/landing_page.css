@@ -1,0 +1,94 @@
+.gameStartScreen{
+    width: 100%;
+    height: auto;
+    animation: forwards;
+    -moz-animation: cssAnimation 2s ease-in 5s forwards;
+}
+
+.landingDiv{
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+.secondLandingDiv{
+    background-image: url("../imgs/oakprofbg.png");
+    padding: 10px;
+    height: fit-content
+}
+
+.saludoDiv{
+    background-color: #f8f8f8;
+    border: solid 9px #a0d0e0;
+    outline: 4px solid #47739d;
+    border-radius: 60px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 10px;
+    margin-top: 5px;
+}
+.saludoP{
+    display: block;
+    white-space: nowrap;
+    font-family: pokeFont;
+    color: #696968;
+    font-size: 25px;
+    line-height: 60px;
+    overflow: hidden;
+    animation: maquina 3s steps(55) alternate 1 forwards;
+}
+
+.saludoPP{
+    white-space: nowrap;
+    font-family: pokeFont;
+    color: #696968;
+    font-size: 25px;
+    line-height: 60px;
+    width: 0ch;
+    overflow: hidden;
+    animation: maquina 3s steps(49) alternate 1 3s forwards;
+}
+
+@keyframes maquina{
+    0%{
+        width: 0ch;
+    }
+    100%{
+        width: 100%;
+        border-right: #f8f8f8;
+    }
+}
+
+.profOak{
+    margin-top: 30px;
+    height: 400px;
+    width: auto;
+    margin-bottom: 0px;
+}
+.link{
+    text-decoration: none;
+}
+
+.btnDiv{
+    margin: 30px;
+}
+
+.landingBtn{
+    background-color: 	#C0C0C0;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: 	#696969;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 15px;
+    font-family: pokeFont;
+    color: 	#000000;
+}
+
+
+.landingImg{
+    width: 100%;
+    height: 100%;
+}

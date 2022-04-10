@@ -1,13 +1,47 @@
-body {
+*, html{
+  padding: 0;
   margin: 0;
+}
+
+body {
+  background-image: url("./imgs/bg3.jpg");
+  margin: 0px;
+  padding: 0px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+
+  font-family: pokeFont;
+  
+  src: url(./PKMN.ttf);
+  
+}
+
+@font-face {
+
+  font-family: pokeHollow;
+  
+  src: url(./pokemonHollow.ttf);
+  
+}
+
+@font-face {
+
+  font-family: pokeSolid;
+  
+  src: url(./pokemonSolid.ttf);
+  
 }

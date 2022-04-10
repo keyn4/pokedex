@@ -1,0 +1,114 @@
+.pokeDivGrande{
+    position: relative;
+    display: inline-block;
+    top: 1%;
+    width: 100%;
+    background-image: url(https://p4.wallpaperbetter.com/wallpaper/555/569/194/movie-pokemon-the-movie-2000-pidgey-pokemon-wallpaper-preview.jpg);
+    background-size: 100%;
+}
+.pokeCardDiv{
+    position: absolute;
+    top: 30%;
+}
+.imgDiv{
+    position: relative;
+    top: 130%;
+    left: 360px;
+    background-color: rgb(248, 248, 248, 0.3);
+    height: 210px;
+    width: 317px;
+    border-radius: 20px;
+}
+
+.pokeImg{
+    height: 200px;
+}
+
+.nombreDiv{
+    position: absolute;
+    top: 195%;
+    left: 400px;
+}
+
+.nombre{
+    font-family: pokeFont;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.idDiv{
+    position: absolute;
+    top:195%;
+    left: 900px;
+}
+
+.vidaDiv{
+    position: absolute;
+    top:195%;
+    left: 1070px;
+}
+
+.idVida{
+    font-family: pokeFont ;
+    font-size: 12px;
+    color: 	#FFFAFA;
+}
+
+.statsDiv{
+    position: absolute;
+    width: fit-content;
+    top: 15%;
+    left: 900px;
+}
+
+.statsDiv2{
+    position: absolute;
+    width: fit-content;
+    top: 15%;
+    left: 1020px;
+}
+
+.statsP{
+    font-family: 'Changa';
+    font-weight: bold;
+    color: white;
+}
+
+.h{
+    position: absolute;
+    top: 143%;
+    left: 338px;
+}
+
+.homeImg{
+    height: 40px;
+}
+
+.noExisteText{
+    position: absolute;
+    top: 40%;
+    left: 880px;
+}
+
+.noExisteText p{
+    font-family: pokeFont;
+    color: #FFFAFA;
+}
+
+.noExisteImg{
+    position: absolute;
+    top: 30%;
+    left: 360px;
+}
+
+.noExisteImg img{
+    height: 210px;
+    width: 317px;
+    border-radius: 16px;
+}
+
+.noExisteH{
+    position: absolute;
+    top: 71%;
+    left: 337px;
+}

@@ -12,12 +12,10 @@ const {bringTypes} = require('./types.js');
 const router = Router();
 
 const getApiInfo = async () =>{
-    console.log("ENTRE AL GETAPIINFO")
     const poke1 = await axios.get('https://pokeapi.co/api/v2/pokemon');
     const poke2 = await axios.get(poke1.data.next)
     const apiData = poke1.data.results.concat(poke2.data.results)
 
-    console.log(apiData)
     const pokemonsDetailInfo = await Promise.all(
         apiData.map(async p =>{
 
@@ -72,13 +70,26 @@ router.get('/pokemons', async (req, res) =>{
             const name2 = name.toLowerCase()
             let allDBPokemon = await pokemonDB();
             let pokeDB = allDBPokemon.filter((p) => p.nombre.toLowerCase() === name2 );
-           
+
             if(pokeDB.length >= 1 ){ 
                 res.json(pokeDB[0])
             }
             else{
                 const pokemonApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name2}`)
-                res.json(pokemonApi.data)
+                let pokeData = {
+                    nombre: pokemonApi.data.name,
+                    id: pokemonApi.data.id,
+                    imagen: pokemonApi.data.sprites.other.home.front_default,
+                    tipos: pokemonApi.data.types.map(p => {return p.type}), // aunque haya un solo tipo, siempre es un array
+                    altura: pokemonApi.data.height,
+                    peso: pokemonApi.data.weight,
+                    vida: pokemonApi.data.stats[0].base_stat,
+                    fuerza: pokemonApi.data.stats[1].base_stat,
+                    defensa: pokemonApi.data.stats[2].base_stat,
+                    velocidad: pokemonApi.data.stats[5].base_stat,
+                    origin: "api",
+                }
+                res.json(pokeData)
             }
         }
         catch(err){
@@ -103,32 +114,20 @@ router.post('/pokemons', async (req, res) =>{
     let pokeCreated = await Pokemon.create({
         nombre, vida, fuerza, defensa, velocidad, altura, peso 
     })
-    // aquí busco los tipos que concuerdan con lo que me llega por body
-    let tiposCreated = await Tipos.findAll({
-        where: {name: tipos}
-    })
+    // aquí verifico si me envian tipos y busco los tipos que concuerdan con lo que me llega por body
+    if(tipos){
+        let tiposCreated = await Tipos.findAll({
+            where: {name: tipos}
+        })
+        pokeCreated.addTipos(tiposCreated)
+    }
+
     // y aquí añado esos tipos a mi pokemon creado en la tabla intermedia 
-    pokeCreated.addTipos(tiposCreated)
     res.send("Pokemon creado exitosamente!")
 })
 
 router.get('/types', async (req, res) =>{
     bringTypes()
-
-    // * COMENTARIO: Antes lo hice desde aquí, pero lo comenté y puse una variable en index general para que los tipos se suban
-    // ni bien se conecte al servidor, por eso todo lo de abajo lo puse dentro de la función bringTypes en types.*
-
-        // const type = await axios.get('https://pokeapi.co/api/v2/type')
-        // const typesInfo = type.data
-        // const types = typesInfo.results.map(t => {
-        //     return t.name
-        // })
-        // types.map(t => {
-        //     Tipos.findOrCreate({
-        //         where:{name: t}
-        //     })      
-        // });
-
     const allTypes = await Tipos.findAll();
     res.json(allTypes)
 })
