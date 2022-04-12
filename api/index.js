@@ -29,4 +29,4 @@ conn.sync({ force: false }).then(() => {
     if (true) {bringTypes()}
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
-});
+}); 

@@ -4,10 +4,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import { getPokemons } from '../actions';
 import Card from './card';
 import NavBar from './navBar';
-import ReactPaginate from "react-paginate"
+// import ReactPaginate from "react-paginate"
 import Tipos from './tipos';
 import "./home.css"
 import Loading from './loading';
+import Pagination from './pagination';
 
 export default function Home(){
     // useDispatch se usa para enviar acciones
@@ -15,19 +16,30 @@ export default function Home(){
 
     // useSlector se usa para acceder a estados
     //en lugar de usar mapStatetoprops traigo en esa constante todo lo que esté en el estado de pokemons
-    // en el reducer a state se le asigna el initialState (u otro nombre) parece ser que eso es así por sintaxis
+    // en el reducer a state se le asigna el initialState (psx)
 
     const allPokemons = useSelector((state) => state.originPokemons);
-    const [currentPage, setCurrentPage] = useState(0);
-    const pokesPerPage = 12;
-    const pagesVisited = currentPage * pokesPerPage;
+    //REACT PAGINATE
+    // const [currentPage, setCurrentPage] = useState(0);
+    // const pokesPerPage = 12;
+    // const pagesVisited = currentPage * pokesPerPage;
 
-    const showPokes = allPokemons.slice(pagesVisited, pagesVisited + pokesPerPage).map(
+    // const showPokes = allPokemons.slice(pagesVisited, pagesVisited + pokesPerPage).map(
+    //     p => <Card name = {p.nombre} img={p.imagen} types={p.tipos}/>
+    // )  
+    // const pageCount = Math.ceil(allPokemons.length / pokesPerPage)
+    // const changePage = ({selected}) => {setCurrentPage(selected)}
+
+    //PAGINACIÓN REACT NORMAL
+
+    const pokesPerPage = 12;
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+    const [currentPage, setCurrentPage] = useState(1);
+    const indexOfLastPoke = currentPage*pokesPerPage;
+    const indexOfFirstPoke = indexOfLastPoke - pokesPerPage;
+    const showPokes = allPokemons.slice(indexOfFirstPoke, indexOfLastPoke).map(
         p => <Card name = {p.nombre} img={p.imagen} types={p.tipos}/>
     )
-    
-    const pageCount = Math.ceil(allPokemons.length / pokesPerPage)
-    const changePage = ({selected}) => {setCurrentPage(selected)}
     
     //console.log("SALE O NO QUE PEDOOOO???", allPokemons)
     // el segundo parametro es de lo que depende el componentdidmount
@@ -36,8 +48,9 @@ export default function Home(){
         dispatch(getPokemons())}, [dispatch]
     );
     
+    //para usar react paginate cambiar a 0
     useEffect(() => {
-        setCurrentPage(0)
+        setCurrentPage(1)
      }, [allPokemons]);
     
     
@@ -59,7 +72,7 @@ export default function Home(){
         SetLoading(true)
         setTimeout(() =>{
             SetLoading(false)
-        }, 7000)
+        }, 4000)
     }, [])
 
 
@@ -82,17 +95,21 @@ export default function Home(){
                         {showPokes}
                     </div>
                     <div className='paginationDiv'> 
-                        <ReactPaginate
+                        {/* <ReactPaginate
                                 previousLabel = {"Anterior"}
                                 nextLabel = {"Siguiente"}
                                 pageCount = {pageCount}
                                 onPageChange = {changePage}
                                 containerClassName = {"paginationBttns"}
-                                previousClassName = {"prevBtn pagS"}
-                                nextLinkClassName = {"nextBtn pagS"}
+                                previousClassName = {"prevBtn"}
+                                nextLinkClassName = {"nextBtn"}
                                 disabledClassName = {"disabledPag"}
                                 activeClassName = {"activePage"}
-                            />
+                            /> */}
+                        <Pagination 
+                            allPokemons={allPokemons} 
+                            pokesPerPage={pokesPerPage} 
+                            paginate={paginate}/>
                     </div>
                 </>
                 )

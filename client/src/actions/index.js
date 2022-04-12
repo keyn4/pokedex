@@ -80,6 +80,7 @@ export function addPokemon (payload){
         await axios.post( "http://localhost:3001/pokemons", payload)
 
         return dispatch({
+            type: "ADD_POKEMON",
             payload
         })
     }

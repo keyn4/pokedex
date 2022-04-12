@@ -85,7 +85,7 @@ router.get('/pokemons', async (req, res) =>{
                     peso: pokemonApi.data.weight,
                     vida: pokemonApi.data.stats[0].base_stat,
                     fuerza: pokemonApi.data.stats[1].base_stat,
-                    defensa: pokemonApi.data.stats[2].base_stat,
+                    defensa: pokemonApi.data.stats[2].base_stat, 
                     velocidad: pokemonApi.data.stats[5].base_stat,
                     origin: "api",
                 }

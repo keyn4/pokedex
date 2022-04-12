@@ -1,0 +1,103 @@
+.formDiv{
+    padding-top: 0px;
+    display: flex;
+    flex-flow: column wrap;
+    background-color: #3b5ba7;
+    background-size: 100%;
+    background-image: url(https://p4.wallpaperbetter.com/wallpaper/555/569/194/movie-pokemon-the-movie-2000-pidgey-pokemon-wallpaper-preview.jpg);
+}
+
+
+.creaPokeTitle{
+    font-family: pokeSolid;
+    color: #ffcb03;
+    -webkit-text-stroke: 5px #3b5ba7;
+    font-size: 90px;
+    line-height: 160px;
+}
+
+.justify{
+    margin: 18px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.labelDiv{
+    background-color: #4d5c2b;
+}
+
+.formDiv label{
+    font-family: pokeFont;
+    font-size: 25px;
+    color: #f8f8f8;
+    text-shadow: 2px 2px 0px #000;
+    background-color: rgb(148, 146, 175,0.4);
+    padding: 4px;
+    border-radius: 2px;
+    text-align: center;
+    margin-right: 30px;
+}
+
+.formDiv input{
+    border: 5px solid #4d5c2b;
+    border-radius: 10px;
+    background-color: #f8f8d8;
+    height: 40px;
+    width: 300px;
+    font-family: pokeFont;
+}
+
+.formDiv form button{
+    border: 5px solid #e0d7df;
+    border-radius: 10px;
+    background-color: #285068;
+    width: 200px;
+    height: 58px;
+    font-family: pokeFont;
+    color: #ebeced;
+    font-size: 35px;
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#addPokeTipos{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 18px;
+}
+
+#tiposLabel{
+    font-size: 15px;
+    color: #000;
+    text-shadow: none;
+    background: transparent;
+}
+
+#tiposInput{
+    height: 15px;
+}
+
+.tiposDivPeq{
+    padding-right: 0%;
+    background-color: #f8f8d8;
+    width: min-content;
+    margin: 18px;
+}
+
+.formDivChiq span{
+    font-family: pokeFont;
+    font-size: 15px;
+    color: #f90000;
+    background-color: #f8f8d8;
+    border-radius: 10px;
+}
+
+.danger{
+    outline: solid #f90000 3px;
+}
