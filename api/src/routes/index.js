@@ -108,6 +108,21 @@ router.get('/pokemons/:idPokemon', async (req, res) =>{
     res.json(pokemonEncontrado.data)
 })
 
+router.delete('/pokemons/:idPokemon', async(req, res) =>{
+
+    try{
+        const {idPokemon} = req.params
+        Pokemon.destroy({
+            where:{
+                id : idPokemon
+            }
+        })
+        res.json({msg:"El pokemon ha sido borrado con éxito"})
+    }
+    catch{
+        res.json({msg: "Un error ocurrió al tratar de borrar este pokemon"})
+    }
+})
 
 router.post('/pokemons', async (req, res) =>{
     let {nombre, vida, fuerza, defensa, velocidad, altura, peso, tipos } = req.body;

@@ -38,7 +38,7 @@ export default function AddPokemon() {
     if (!data.nombre) {
      errors.nombre = 'Se necesita un nombre para el pokemon';
     } else if (!RegExAlfa.test(data.nombre)) {
-      errors.nombre = 'El nombre del pokemon debe contener solo letras';
+      errors.nombre = 'El nombre del pokemon debe contener solo letras y ser mayor a 4 caracteres';
     }if(data.vida && (!RegExNum.test(data.vida) || 0 > data.vida || data.vida >200) ){
       errors.vida= "La vida tiene que ser un número mayor a 0 y menor a 200"
     } if (data.fuerza && (!RegExNum.test(data.fuerza) || 0 > data.fuerza || data.fuerza >100) ){
@@ -80,6 +80,9 @@ export default function AddPokemon() {
 
   function onSubmit(e) {
     e.preventDefault();
+    if (data.nombre === ""){
+      return alert("Revise el formulario y corríjalo")
+    }
     if(Object.keys(errors).length === 0){
       dispatch(addPokemon(data));
       alert("El pokemon ha sido creado con exito")
@@ -97,7 +100,7 @@ export default function AddPokemon() {
         <div className="justify">
           <label>Nombre</label>
           <input className={errors.nombre && "danger"}
-            type="text" name='nombre' onChange={(e) =>handleInputChange(e)} value={data.nombre.toLowerCase()}/>
+            type="text" focus name='nombre' onChange={(e) =>handleInputChange(e)} value={data.nombre.toLowerCase()}/>
           
         </div>
         {errors.nombre && (

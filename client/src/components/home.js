@@ -45,7 +45,7 @@ export default function Home(){
     // el segundo parametro es de lo que depende el componentdidmount
     // si el array tiene algo es móntalo cuando este el contenido del array
     useEffect(() =>{
-        dispatch(getPokemons())}, [dispatch]
+        dispatch(getPokemons())}, []
     );
     
     //para usar react paginate cambiar a 0
