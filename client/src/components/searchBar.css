@@ -20,7 +20,8 @@
     padding: 8px;
     background-color: rgb(148, 146, 175, 0.7);
     color: 	#f8f8f8;
-    text-shadow: 3px 3px 0px #000
+    text-shadow: 3px 3px 0px #000;
+    cursor: pointer;
 }
 
 .linkInput{

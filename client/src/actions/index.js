@@ -8,6 +8,7 @@ export const GET_TIPOS = "GET_TIPOS"
 export const GET_POKE_INFO = "GET_POKE_INFO"
 export const ADD_POKEMON = "ADD_POKEMON"
 export const FILTER_BY_TYPES = "FILTER_BY_TYPES"
+export const CLEAN_POKE_INFO = "CLEAN_POKE_INFO"
 
 // COMO HACERLO CON FETCH
 // export const getPokemons = () => dispatch => {
@@ -72,6 +73,13 @@ export function getPokeInfo(payload){
             type:GET_POKE_INFO,
             payload: json.data,
         })
+    }
+}
+
+export function cleanPokeInfo(){
+    return{
+        type: GET_POKE_INFO,
+        payload: [],
     }
 }
 

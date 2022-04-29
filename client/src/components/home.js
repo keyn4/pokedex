@@ -41,7 +41,6 @@ export default function Home(){
         p => <Card name = {p.nombre} img={p.imagen} types={p.tipos}/>
     )
     
-    //console.log("SALE O NO QUE PEDOOOO???", allPokemons)
     // el segundo parametro es de lo que depende el componentdidmount
     // si el array tiene algo es móntalo cuando este el contenido del array
     useEffect(() =>{
@@ -57,11 +56,11 @@ export default function Home(){
      //dejar fijo el tipos
      const[tiposEstado, SetTiposEstado] = useState(false)
      const fixTipos = () =>{
-         if(window.scrollY >= 258){
-            SetTiposEstado(true)
+         if(window.scrollY <= 258){
+            SetTiposEstado(false)
          }
          else{
-             SetTiposEstado(false)
+             SetTiposEstado(true) 
          }
      }
     window.addEventListener('scroll', fixTipos)
@@ -72,14 +71,13 @@ export default function Home(){
         SetLoading(true)
         setTimeout(() =>{
             SetLoading(false)
-        }, 4000)
-    }, [])
+        }, 3000)
+    }, []) 
 
 
     return (
         <div className='homeDiv'>
-            {
-                loading? (
+            {   loading? (
                 <Loading loading={loading}/>):
                 
                 (

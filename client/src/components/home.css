@@ -16,7 +16,9 @@
     font-size: 100px;
     line-height: 180px;
 }
-
+.homeImg{
+    cursor: pointer;
+}
 .navBarDiv{
     grid-column: 2/4;
 }
@@ -41,6 +43,7 @@
 
 .pokesDiv{
     grid-column: 2/4;
+    min-height: 800px;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;

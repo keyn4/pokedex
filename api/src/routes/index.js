@@ -102,11 +102,18 @@ router.get('/pokemons', async (req, res) =>{
     } 
 })
 
-router.get('/pokemons/:idPokemon', async (req, res) =>{
-    const {idPokemon} = req.params
-    const pokemonEncontrado = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
-    res.json(pokemonEncontrado.data)
-})
+// router.get('/pokemons/:idPokemon', async (req, res) =>{
+//     const {idPokemon} = req.params
+//     const pokemonEncontrado = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
+//     res.json(pokemonEncontrado.data)
+// })
+
+//EL GET CON PROMESA
+// router.get("/pokemons/:idPokemon", function (req,res){
+//     const{idPokemon} =req.params
+//     axios.get(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
+//     .then(r => res.json(r.data))
+// })
 
 router.delete('/pokemons/:idPokemon', async(req, res) =>{
 
